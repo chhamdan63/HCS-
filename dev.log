@@ -1,0 +1,9 @@
+nohup: ignoring input
+▲ Next.js 16.2.6 (Turbopack)
+- Local:         http://localhost:3000
+- Network:       http://0.0.0.0:3000
+- Environments: .env
+✓ Ready in 339ms
+[seed] Hamdan Commission Shop data ready
+
+ GET /login 200 in 403ms (next.js: 96ms, application-code: 307ms)

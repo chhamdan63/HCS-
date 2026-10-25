@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 4, "column": 0}, "map": {"version":3,"sources":["file:///workspace/src/instrumentation.ts"],"sourcesContent":["/**\n * Runs once when the Node server bootstraps: creates the schema seed\n * (fixed accounts, settings, owner login) and the small demo data set.\n */\nexport async function register() {\n  if (process.env.NEXT_RUNTIME !== \"nodejs\") return;\n  if (process.env.NEXT_PHASE === \"phase-production-build\") return;\n  try {\n    const { runSeed } = await import(\"./db/seed\");\n    await runSeed();\n    // eslint-disable-next-line no-console\n    console.log(\"[seed] Hamdan Commission Shop data ready\");\n  } catch (err) {\n    // eslint-disable-next-line no-console\n    console.error(\"[seed] failed:\", err instanceof Error ? err.message : err);\n  }\n}\n"],"names":["register","process","env","NEXT_PHASE","runSeed","console","log","err","error","Error","message"],"mappings":"AAAA;;;CAGC;;;;AACM,eAAeA;IACpB;;IACA,IAAIC,QAAQC,GAAG,CAACC,UAAU,KAAK,0BAA0B;IACzD,IAAI;QACF,MAAM,EAAEC,OAAO,EAAE,GAAG;QACpB,MAAMA;QACN,sCAAsC;QACtCC,QAAQC,GAAG,CAAC;IACd,EAAE,OAAOC,KAAK;QACZ,sCAAsC;QACtCF,QAAQG,KAAK,CAAC,kBAAkBD,eAAeE,QAAQF,IAAIG,OAAO,GAAGH;IACvE;AACF"}}]
+}

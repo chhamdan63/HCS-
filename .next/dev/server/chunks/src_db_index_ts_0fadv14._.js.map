@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 6, "column": 0}, "map": {"version":3,"sources":["file:///workspace/src/db/index.ts"],"sourcesContent":["import { drizzle } from \"drizzle-orm/node-postgres\";\nimport { Pool } from \"pg\";\n\nconst databaseUrl = process.env.DATABASE_URL;\n\nif (!databaseUrl) {\n  throw new Error(\"DATABASE_URL is required\");\n}\n\nconst globalForDb = globalThis as typeof globalThis & {\n  __arenaNextJsPostgresqlPool?: Pool;\n};\n\nexport const pool =\n  globalForDb.__arenaNextJsPostgresqlPool ??\n  new Pool({\n    connectionString: databaseUrl,\n  });\n\nif (process.env.NODE_ENV !== \"production\") {\n  globalForDb.__arenaNextJsPostgresqlPool = pool;\n}\n\nexport const db = drizzle(pool);\n"],"names":["databaseUrl","process","env","DATABASE_URL","Error","globalForDb","globalThis","pool","__arenaNextJsPostgresqlPool","connectionString","db"],"mappings":";;;;;;AAAA;AACA;;;;;;;;AAEA,MAAMA,cAAcC,QAAQC,GAAG,CAACC,YAAY;AAE5C,IAAI,CAACH,aAAa;IAChB,MAAM,IAAII,MAAM;AAClB;AAEA,MAAMC,cAAcC;AAIb,MAAMC,OACXF,YAAYG,2BAA2B,IACvC,IAAI,qJAAI,CAAC;IACPC,kBAAkBT;AACpB;AAEF,wCAA2C;IACzCK,YAAYG,2BAA2B,GAAGD;AAC5C;AAEO,MAAMG,KAAK,IAAA,4KAAO,EAACH"}}]
+}
